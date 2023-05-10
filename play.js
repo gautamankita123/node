@@ -51,11 +51,34 @@
 
 // printSequence();
 
+// const http = require('http');
+// const server = http.createServer((req, res) => {
+//     console.log('Ankita Gautam!');
+//     res.end('Server is running.');
+// });
+// server.listen(4000, () => {
+//     console.log('4000');
+// });
+
+
 const http = require('http');
+
 const server = http.createServer((req, res) => {
-    console.log('Ankita Gautam!');
-    res.end('Server is running.');
+    const { url } = req;
+
+    if (url === '/home') {
+        res.write('Welcome home');
+    } else if (url === '/about') {
+        res.write('Welcome to About Us page');
+    } else if (url === '/node') {
+        res.write('Welcome to my Node.js project');
+    } else {
+        res.write('404 Not Found');
+    }
+
+    res.end();
 });
-server.listen(4000, () => {
-    console.log('4000');
+
+server.listen(3000, () => {
+    console.log('3000');
 });
